@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Clock</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <div class="main_app">
+      <div class="clock">
+        <div class="clock_Face">
+          <div class="aroows hour-arrow"></div>
+          <div class="aroows hour-min"></div>
+          <div class="aroows hour-sec"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inline JavaScript -->
+    <script>
+      const hourArrow = document.querySelector(".hour-arrow");
+      const hourSec = document.querySelector(".hour-sec");
+      const hourMin = document.querySelector(".hour-min");
+
+      function getSeconds() {
+        //   get Exist Date //
+        const todaysDate = new Date();
+        // get Exist Hour
+        const hour = todaysDate.getHours();
+        const hour_Decrese = (hour / 12) * 360 + 90;
+        hourArrow.style.transform = `rotate(${hour_Decrese}deg)`;
+        // get Exist Minute
+        const minutes = todaysDate.getMinutes();
+        const minute_Decrese = (minutes / 60) * 360 + 90;
+        hourMin.style.transform = `rotate(${minute_Decrese}deg)`;
+        // get Exist Second
+        const seconds = todaysDate.getSeconds();
+        const second_Decrese = (seconds / 60) * 360 + 90;
+        hourSec.style.transform = `rotate(${second_Decrese}deg)`;
+        // console.log(seconds);
+      }
+      setInterval(getSeconds, 1000);
+    </script>
+  </body>
+</html>

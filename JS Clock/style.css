@@ -1,0 +1,41 @@
+body {
+  text-align: center;
+}
+
+.main_app {
+  margin-top: 5%;
+}
+.clock {
+  margin: 0 auto;
+  width: 300px;
+  height: 300px;
+  background-image: url("clock.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  padding: 60px;
+}
+@media screen and (min-width: 650) {
+  .clock {
+    width: 100%;
+  }
+}
+.clock_Face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-3px);
+  transition: all 0.05s;
+  transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+}
+
+.aroows {
+  width: 50%;
+  height: 6px;
+  background: black;
+  position: absolute;
+  top: 50%;
+  transform-origin: 100%;
+  transform: rotate(90deg);
+}

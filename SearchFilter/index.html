@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Filter Data</title>
+  </head>
+  <style>
+    body {
+      text-align: center;
+    }
+    input {
+      width: 300px;
+      height: 40px;
+    }
+    .suggestions {
+      list-style-type: none;
+    }
+  </style>
+  <body>
+    <div>
+      <h2>Seach Filter</h2>
+      <input class="search" placeholder="Search Item" type="text" />
+      <ul class="suggestions">
+        <li>quo vero reiciendis velit similique earum</li>
+        <li>vero eaque aliquid doloribus et cul</li>
+      </ul>
+    </div>
+
+    <script>
+      // Api Data is in this variable //
+      let item = [];
+      // Api Fetching //
+      const res = fetch("https://jsonplaceholder.typicode.com/comments")
+        .then((get) => get.json())
+        .then((data) => item.push(...data));
+
+      // Matching Function // 
+      function getMatchItem(wordMatch, item) {
+        return item.filter((myVal) => {
+          const regix = new RegExp(wordMatch, "gi");
+          return myVal.name.match(regix);
+        });
+      }
+      // Display Function //
+      function display() {
+        const searchArray = getMatchItem(this.value, item);
+        const Html = searchArray
+          .map((val) => {
+            return `
+            <li>
+              <span>${val.name}</span>
+            </li>
+            `;
+          })
+          .join(" ");
+        suggestions.innerHTML = Html;
+      }
+
+      const serachInput = document.querySelector(".search");
+      const suggestions = document.querySelector(".suggestions");
+
+      serachInput.addEventListener("change", display);
+      serachInput.addEventListener("keyup", display);
+    </script>
+  </body>
+</html>

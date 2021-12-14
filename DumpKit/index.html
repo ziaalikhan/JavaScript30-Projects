@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <h2 class="heading">Drum Kit</h2>
+    <div class="main_container">
+      <div class="keys" key-data="65">
+        <p>A</p>
+      </div>
+      <div class="keys" key-data="66">
+        <p>B</p>
+      </div>
+      <div class="keys" key-data="67">
+        <p>C</p>
+      </div>
+
+      <div class="keys" key-data="68">
+        <p>D</p>
+      </div>
+      <div class="keys" key-data="69">
+        <p>E</p>
+      </div>
+      <div class="keys" key-data="70">
+        <p>F</p>
+      </div>
+      <div class="keys" key-data="71">
+        <p>G</p>
+      </div>
+      <div class="keys" key-data="72">
+        <p>H</p>
+      </div>
+      <div class="keys" key-data="73">
+        <p>I</p>
+      </div>
+      <div class="keys" key-data="74">
+        <p>J</p>
+      </div>
+      <div class="keys" key-data="75">
+        <p>K</p>
+      </div>
+      <div class="keys" key-data="76">
+        <p>L</p>
+      </div>
+      <div class="keys" key-data="77">
+        <p>M</p>
+      </div>
+      <div class="keys" key-data="78">
+        <p>N</p>
+      </div>
+      <div class="keys" key-data="79">
+        <p>O</p>
+      </div>
+      <div class="keys" key-data="80">
+        <p>P</p>
+      </div>
+      <div class="keys" key-data="81">
+        <p>Q</p>
+      </div>
+      <div class="keys" key-data="82">
+        <p>R</p>
+      </div>
+      <div class="keys" key-data="83">
+        <p>S</p>
+      </div>
+      <div class="keys" key-data="84">
+        <p>T</p>
+      </div>
+      <div class="keys" key-data="85">
+        <p>U</p>
+      </div>
+      <div class="keys" key-data="86">
+        <p>V</p>
+      </div>
+      <div class="keys" key-data="87">
+        <p>W</p>
+      </div>
+
+      <div class="keys" key-data="88">
+        <p>X</p>
+      </div>
+      <div class="keys" key-data="89">
+        <p>Y</p>
+      </div>
+      <div class="keys" key-data="90">
+        <p>Z</p>
+      </div>
+      <div id="space_bar" class="keys" key-data="32">
+        <p>Space Bar</p>
+      </div>
+    </div>
+
+    <audio key-data="32" src="congrat.wav"></audio>
+    <audio key-data="65" src="dog.wav"></audio>
+    <audio key-data="66" src="car.wav"></audio>
+    <audio key-data="67" src="dog.wav"></audio>
+    <audio key-data="68" src="alaram.wav"></audio>
+    <audio key-data="69" src="dog.wav"></audio>
+    <audio key-data="70" src="car.wav"></audio>
+    <audio key-data="71" src="alaram.wav"></audio>
+    <audio key-data="72" src="myaudio.wav"></audio>
+    <audio key-data="73" src="car.wav"></audio>
+    <audio key-data="74" src="alaram.wav"></audio>
+    <audio key-data="75" src="myaudio.wav"></audio>
+    <audio key-data="76" src="car.wav"></audio>
+    <audio key-data="77" src="alaram.wav"></audio>
+    <audio key-data="78" src="myaudio.wav"></audio>
+    <audio key-data="79" src="car.wav"></audio>
+    <audio key-data="80" src="alaram.wav"></audio>
+    <audio key-data="81" src="myaudio.wav"></audio>
+    <audio key-data="82" src="car.wav"></audio>
+    <audio key-data="83" src="alaram.wav"></audio>
+    <audio key-data="84" src="myaudio.wav"></audio>
+    <audio key-data="85" src="car.wav"></audio>
+    <audio key-data="86" src="myaudio.wav"></audio>
+    <audio key-data="87" src="dog.wav"></audio>
+    <audio key-data="88" src="alaram.wav"></audio>
+    <audio key-data="89" src="myaudio.wav"></audio>
+    <audio key-data="90" src="alaram.wav"></audio>
+
+    <script>
+      window.addEventListener("keydown", convertIntoVoice);
+      function convertIntoVoice(e) {
+        let myaudio = document.querySelector(`audio[key-data="${e.keyCode}"]`);
+        let getKeys = document.querySelector(`.keys[key-data="${e.keyCode}"]`);
+        if (!myaudio) {
+          return;
+        }
+        myaudio.play();
+        getKeys.classList.add("show");
+      }
+    </script>
+  </body>
+</html>
