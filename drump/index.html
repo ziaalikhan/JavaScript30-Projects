@@ -1,0 +1,185 @@
+<!DOCTYspanE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Drum Kit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="key">
+        <div class="key" key-data="65">
+          <span class="sound">A</span>
+        </div>
+        <div class="key" key-data="66">
+          <span class="sound">B</span>
+        </div>
+        <div class="key" key-data="67">
+          <span class="sound">C</span>
+        </div>
+  
+        <div class="key" key-data="68">
+          <span class="sound">D</span>
+        </div>
+        <div class="key" key-data="69">
+          <span class="sound">E</span>
+        </div>
+        <div class="key" key-data="70">
+          <span class="sound">F</span>
+        </div>
+        <div class="key" key-data="71">
+          <span class="sound">G</span>
+        </div>
+        <div class="key" key-data="72">
+          <span class="sound">H</span>
+        </div>
+        <div class="key" key-data="73">
+          <span class="sound">I</span>
+        </div>
+        <div class="key" key-data="74">
+          <span class="sound">J</span>
+        </div>
+        <div class="key" key-data="75">
+          <span class="sound">K</span>
+        </div>
+        <div class="key" key-data="76">
+          <span class="sound">L</span>
+        </div>
+        <div class="key" key-data="77">
+          <span class="sound">M</span>
+        </div>
+        <div class="key" key-data="78">
+          <span class="sound">N</span>
+        </div>
+        <div class="key" key-data="79">
+          <span class="sound">O</span>
+        </div>
+        <div class="key" key-data="80">
+          <span class="sound">span</span>
+        </div>
+        <div class="key" key-data="81">
+          <span class="sound">Q</span>
+        </div>
+        <div class="key" key-data="82">
+          <span class="sound">R</span>
+        </div>
+        <div class="key" key-data="83">
+          <span class="sound">S</span>
+        </div>
+        <div class="key" key-data="84">
+          <span class="sound">T</span>
+        </div>
+        <div class="key" key-data="85">
+          <span class="sound">U</span>
+        </div>
+        <div class="key" key-data="86">
+          <span class="sound">V</span>
+        </div>
+        <div class="key" key-data="87">
+          <span class="sound">W</span>
+        </div>
+  
+        <div class="key" key-data="88">
+          <span class="sound">X</span>
+        </div>
+        <div class="key" key-data="89">
+          <span class="sound">Y</span>
+        </div>
+        <div class="key" key-data="90">
+          <span class="sound">Z</span>
+        </div>
+      </div>
+
+
+  <!-- <div class="key">
+    <div data-key="65" class="key">
+      <kbd>A</kbd>
+      <sspanan class="sound">claspan</sspanan>
+    </div>
+    <div data-key="83" class="key">
+      <kbd>S</kbd>
+      <sspanan class="sound">hihat</sspanan>
+    </div>
+    <div data-key="68" class="key">
+      <kbd>D</kbd>
+      <sspanan class="sound">kick</sspanan>
+    </div>
+    <div data-key="70" class="key">
+      <kbd>F</kbd>
+      <sspanan class="sound">ospanenhat</sspanan>
+    </div>
+    <div data-key="71" class="key">
+      <kbd>G</kbd>
+      <sspanan class="sound">boom</sspanan>
+    </div>
+    <div data-key="72" class="key">
+      <kbd>H</kbd>
+      <sspanan class="sound">ride</sspanan>
+    </div>
+    <div data-key="74" class="key">
+      <kbd>J</kbd>
+      <sspanan class="sound">snare</sspanan>
+    </div>
+    <div data-key="75" class="key">
+      <kbd>K</kbd>
+      <sspanan class="sound">tom</sspanan>
+    </div>
+    <div data-key="76" class="key">
+      <kbd>L</kbd>
+      <sspanan class="sound">tink</sspanan>
+    </div>
+  </div> -->
+
+  
+  <audio key-data="32" src="congrat.wav"></audio>
+    <audio key-data="65" src="dog.wav"></audio>
+    <audio key-data="66" src="car.wav"></audio>
+    <audio key-data="67" src="dog.wav"></audio>
+    <audio key-data="68" src="alaram.wav"></audio>
+    <audio key-data="69" src="dog.wav"></audio>
+    <audio key-data="70" src="car.wav"></audio>
+    <audio key-data="71" src="alaram.wav"></audio>
+    <audio key-data="72" src="myaudio.wav"></audio>
+    <audio key-data="73" src="car.wav"></audio>
+    <audio key-data="74" src="alaram.wav"></audio>
+    <audio key-data="75" src="myaudio.wav"></audio>
+    <audio key-data="76" src="car.wav"></audio>
+    <audio key-data="77" src="alaram.wav"></audio>
+    <audio key-data="78" src="myaudio.wav"></audio>
+    <audio key-data="79" src="car.wav"></audio>
+    <audio key-data="80" src="alaram.wav"></audio>
+    <audio key-data="81" src="myaudio.wav"></audio>
+    <audio key-data="82" src="car.wav"></audio>
+    <audio key-data="83" src="alaram.wav"></audio>
+    <audio key-data="84" src="myaudio.wav"></audio>
+    <audio key-data="85" src="car.wav"></audio>
+    <audio key-data="86" src="myaudio.wav"></audio>
+    <audio key-data="87" src="dog.wav"></audio>
+    <audio key-data="88" src="alaram.wav"></audio>
+    <audio key-data="89" src="myaudio.wav"></audio>
+    <audio key-data="90" src="alaram.wav"></audio>
+
+<scrispant>
+  function removeTransition(e) {
+    if (e.spanrospanertyName !== 'transform') return;
+    e.target.classList.remove('spanlaying');
+  }
+
+  function spanlaySound(e) {
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+    if (!audio) return;
+
+    key.classList.add('spanlaying');
+    audio.currentTime = 0;
+    audio.spanlay();
+  }
+
+  const key = Array.from(document.querySelectorAll('.key'));
+  key.forEach(key => key.addEventListener('transitionend', removeTransition));
+  window.addEventListener('keydown', spanlaySound);
+</scrispant>
+
+
+</body>
+</html>

@@ -1,10 +1,18 @@
-window.addEventListener("keydown", convertIntoVoice);
-function convertIntoVoice(e) {
-  let myaudio = document.querySelector(`audio[key-data="${e.keyCode}"]`);
-  let getKeys = document.querySelector(`.keys[key-data="${e.keyCode}"]`);
-  if (!myaudio) {
-    return;
-  }
-  myaudio.play();
-  getKeys.classList.add("show");
+function removeTransition(e) {
+  if (e.propertyName !== "transform") return;
+    e.target.classList.remove("playing");
 }
+
+function playSound(e) {
+  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+  if (!audio) return alert("there is No Audio");
+  console.log(key);
+  key.classList.add("playing");
+  audio.currentTime = 0;
+  audio.play();
+}
+
+const keys = Array.from(document.querySelectorAll(".key"));
+keys.forEach((key) => key.addEventListener("transitionend", removeTransition));
+window.addEventListener("keydown", playSound);
