@@ -1,0 +1,13 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+.inbox {
+    margin-top: 10%;
+}
+.checkBox {
+  display: flex;
+}
+.checkbox_Input {
+    margin-top: 19px;
+}

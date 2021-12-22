@@ -12,7 +12,7 @@
     padding: 10px;
   }
   .keys {
-    width: 100px;
+    width: 7.5%;
     height: 70px;
     text-align: center;
     background-color: rgba(140, 0, 255, 0.623);
@@ -27,5 +27,5 @@
   }
 
   #space_bar {
-      width: 600px;
+      width: 50%;
   }

@@ -74,10 +74,21 @@
 // })
 // console.log(result);
 
-const arr = [3, 3, 7];
-const result = (a , b) => a + b;
-const active_Result = arr.reduce(result);
-const Inc_Result = arr.reduce(result , 10);
+// const arr = [3, 3, 7];
+// const result = (a , b) => a + b;
+// const active_Result = arr.reduce(result);
+// const Inc_Result = arr.reduce(result , 10);
 
-console.log(active_Result);
-console.log(Inc_Result);
+// console.log(active_Result);
+// console.log(Inc_Result);
+
+let myFirst = (a) => {
+    let b = 5
+    // console.log(name)
+    let secondFunc = ()=> {
+        let sum = a+b;
+        console.log(`the Sum is ${sum}`); 
+    }
+    secondFunc();
+}
+myFirst(10);
