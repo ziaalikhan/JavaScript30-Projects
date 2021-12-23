@@ -28,9 +28,10 @@
   border-color: black;
   box-shadow: 0 0 10px;
 }
-.playing:checked {
+.row{
   display: none;
 }
+
 
 #space_bar {
   width: 50%;

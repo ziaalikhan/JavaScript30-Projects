@@ -1,4 +1,6 @@
 const addItems = document.querySelector(".add-items");
+const delete_item = document.querySelector(".delete-item");
+
 const itemsList = document.querySelector(".plates");
 const items = JSON.parse(localStorage.getItem("items")) || [];
 
@@ -40,7 +42,12 @@ function toggleDone(e) {
   populateList(items, itemsList);
 }
 
+function deleteallItems(e) {
+  localStorage.clear("items");
+}
+
 addItems.addEventListener("submit", addItem);
+delete_item.addEventListener("submit", deleteallItems);
 itemsList.addEventListener("click", toggleDone);
 
 populateList(items, itemsList);
