@@ -30,14 +30,36 @@ body {
   transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
 }
 
-.aroows {
+/* .aroows {
+
+} */
+.hour-arrow {
   width: 50%;
-  height: 6px;
+  height: 10px;
+  background-color: rgba(119, 104, 247, 0.856);
+  position: absolute;
+  top: 50%;
+  transform-origin: 100%;
+  transform: rotate(90deg);
+  border-radius: 50%;
+}
+.hour-min {
+  width: 50%;
+  height: 7px;
   background: black;
   position: absolute;
   top: 50%;
   transform-origin: 100%;
   transform: rotate(90deg);
-  border-radius: 50%
+  border-radius: 50%;
 }
-
+.hour-sec {
+  width: 50%;
+  height: 7px;
+  background: black;
+  position: absolute;
+  top: 50%;
+  transform-origin: 100%;
+  transform: rotate(90deg);
+  border-radius: 50%;
+}

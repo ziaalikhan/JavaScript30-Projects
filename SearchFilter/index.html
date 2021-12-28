@@ -33,19 +33,20 @@
       let item = [];
       // Api Fetching //
       const res = fetch("https://jsonplaceholder.typicode.com/comments")
-        .then((get) => get.json())
+        .then((res) => res.json())
         .then((data) => item.push(...data));
 
-      // Matching Function // 
-      function getMatchItem(wordMatch, item) {
+      // Matching Function //
+      function getMatchItem(wordMatch) {
         return item.filter((myVal) => {
+          // regular expression Flags ==>> g is a global and i is case inSensitive
           const regix = new RegExp(wordMatch, "gi");
           return myVal.name.match(regix);
         });
       }
       // Display Function //
       function display() {
-        const searchArray = getMatchItem(this.value, item);
+        const searchArray = getMatchItem(this.value);
         const Html = searchArray
           .map((val) => {
             return `
@@ -57,7 +58,6 @@
           .join(" ");
         suggestions.innerHTML = Html;
       }
-
       const serachInput = document.querySelector(".search");
       const suggestions = document.querySelector(".suggestions");
 
