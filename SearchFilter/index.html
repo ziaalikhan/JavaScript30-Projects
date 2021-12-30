@@ -5,26 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Search Filter Data</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <style>
-    body {
-      text-align: center;
-    }
-    input {
-      width: 300px;
-      height: 40px;
-    }
-    .suggestions {
-      list-style-type: none;
-    }
-  </style>
+
   <body>
     <div>
-      <h2>Seach Filter</h2>
+      <h2>Search Filter</h2>
       <input class="search" placeholder="Search Item" type="text" />
+      <button id="searchBtn">search</button>
       <ul class="suggestions">
-        <li>quo vero reiciendis velit similique earum</li>
-        <li>vero eaque aliquid doloribus et cul</li>
+        <li>Mens Casual Shirts</li>
+        <li>Solod State Drive M2</li>
       </ul>
     </div>
 
@@ -32,7 +23,7 @@
       // Api Data is in this variable //
       let item = [];
       // Api Fetching //
-      const res = fetch("https://jsonplaceholder.typicode.com/comments")
+      const res = fetch("https://fakestoreapi.com/products")
         .then((res) => res.json())
         .then((data) => item.push(...data));
 
@@ -41,28 +32,31 @@
         return item.filter((myVal) => {
           // regular expression Flags ==>> g is a global and i is case inSensitive
           const regix = new RegExp(wordMatch, "gi");
-          return myVal.name.match(regix);
+          return myVal.title.match(regix);
         });
       }
       // Display Function //
       function display() {
         const searchArray = getMatchItem(this.value);
-        const Html = searchArray
+        let Html = searchArray
           .map((val) => {
             return `
             <li>
-              <span>${val.name}</span>
+              <span>${val.title}</span>
             </li>
             `;
           })
           .join(" ");
         suggestions.innerHTML = Html;
       }
+
       const serachInput = document.querySelector(".search");
       const suggestions = document.querySelector(".suggestions");
 
       serachInput.addEventListener("change", display);
-      serachInput.addEventListener("keyup", display);
+      serachInput.querySelector("#searchBtn", display);
+      // for Key Up
+      // serachInput.addEventListener("keyup", display);
     </script>
   </body>
 </html>

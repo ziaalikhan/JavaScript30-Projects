@@ -182,7 +182,30 @@
 
 // What is RegExp ? (RegExp is a Regular expresssion which we commaonly used for Matching and Seraching the Data..)
 
-let reg = /zia Khan/;
-let para = "Thsi is  an zia Khand his fr zia Khan iends  .";
-let result = reg.exec(para);
-console.log(result);
+// let reg = /zia Khan/;
+// let para = "Thsi is an zia Khand his fr zia Khan iends.";
+// let result = reg.exec(para);
+// console.log(result);
+
+
+// let arr = [1,3,4,5,6];
+// let arr2 = [1,3,4,5,6];
+// let arr3 = [1,3,4,5,6];
+// console.log(arr);
+
+
+let obj = {
+    name: "zia Khan",
+    age: 20,
+    profession: "Developer"
+};
+console.log(obj);
+
+let newObj = {...obj};
+console.log(newObj);
+
+// function getData (){
+//     const {name , age , profession} = obj;
+//     return console.log(`The Name is ${obj.name} and The AGe is ${obj.age} and The profession is ${obj.profession}`)
+// }
+// getData();
