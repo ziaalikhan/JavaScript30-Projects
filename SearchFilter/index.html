@@ -15,7 +15,7 @@
       <button id="searchBtn">search</button>
       <ul class="suggestions">
         <li>Mens Casual Shirts</li>
-        <li>Solod State Drive M2</li>
+        <li>Solid State Drive M2</li>
       </ul>
     </div>
 
@@ -37,7 +37,7 @@
       }
       // Display Function //
       function display() {
-        const searchArray = getMatchItem(this.value);
+        let searchArray = getMatchItem(this.value);
         let Html = searchArray
           .map((val) => {
             return `

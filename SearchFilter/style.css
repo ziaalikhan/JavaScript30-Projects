@@ -4,7 +4,6 @@ body {
   text-align: center;
   height: 100vh;
   background-image: url("./bgImage.jpg");
-  /* background-position: center; */
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -30,7 +29,6 @@ input {
   font-size: 16px;
   cursor: pointer;
 }
-
 .suggestions {
   list-style-type: none;
 }
