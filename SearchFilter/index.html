@@ -12,7 +12,6 @@
     <div>
       <h2>Search Filter</h2>
       <input class="search" placeholder="Search Item" type="text" />
-      <button id="searchBtn">search</button>
       <ul class="suggestions">
         <li>Mens Casual Shirts</li>
         <li>Solid State Drive M2</li>
@@ -37,7 +36,9 @@
       }
       // Display Function //
       function display() {
-        let searchArray = getMatchItem(this.value);
+        let searchArray = getMatchItem(
+          this.value ? this.value : suggestions.innerHTML
+        );
         let Html = searchArray
           .map((val) => {
             return `
@@ -54,9 +55,8 @@
       const suggestions = document.querySelector(".suggestions");
 
       serachInput.addEventListener("change", display);
-      serachInput.querySelector("#searchBtn", display);
-      // for Key Up
-      // serachInput.addEventListener("keyup", display);
+
+      serachInput.addEventListener("keyup", display);
     </script>
   </body>
 </html>
