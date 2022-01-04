@@ -6,6 +6,11 @@ body {
   h3 {
     text-align: center;
   }
+  .container {
+    width: 30px;
+    height: 30px;
+    background-color: blue;
+  }
 
   .mycanvas {
     cursor: cell;
