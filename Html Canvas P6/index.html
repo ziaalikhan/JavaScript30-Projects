@@ -5,16 +5,72 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Canvas</title>
+    <link rel="stylesheet" href="style.css">
   </head>
-  <style>
-    h3 {
-      text-align: center;
-    }
-  </style>
   <body>
     <h3>Html Canvas</h3>
     <h3>Click The Left button On Mouse To Draw SomeThing</h3>
-    <canvas id="draw" width="800" height="800"></canvas>
-    <script src="app.js"></script>
+    <div class="colorAndslider">
+      <div>
+        <input id="colors" type="color" />
+      </div>
+      <div>
+        select Your Pointer Size
+        <input value="1" min="1" max="50" id="mySlider" type="range" />
+      </div>
+    </div>
+    <canvas class="mycanvas" id="draw"></canvas>
+
+    <script>
+      const colors = document.querySelector("#colors");
+      const myslider = document.querySelector("#mySlider");
+      const myrandomColors = document.querySelector("#randomColors");
+
+      const canvas = document.querySelector("#draw");
+
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      ctx.lineJoin = "round";
+      ctx.lineCap = "round";
+
+      function myFunc(e) {
+        ctx.strokeStyle = e.target.value;
+      }
+
+      function mySliderFunc(e) {
+        ctx.lineWidth = e.target.value;
+      }
+
+      let isDrawing = false;
+      let lastX = 0;
+      let lastY = 0;
+      let hue = 0;
+      let direction = true;
+
+      function draw(e) {
+        if (!isDrawing) return; // stop the fn from running when they are not moused down
+        ctx.beginPath();
+        // start from
+        ctx.moveTo(lastX, lastY);
+        // go to
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+        lastX = e.offsetX;
+        lastY = e.offsetY;
+      }
+
+      colors.addEventListener("change", myFunc);
+      myslider.addEventListener("change", mySliderFunc);
+      canvas.addEventListener("mousemove", draw);
+      canvas.addEventListener("mousedown", (e) => {
+        isDrawing = true;
+        lastY = e.offsetY;
+        lastX = e.offsetX;
+      });
+
+      canvas.addEventListener("mouseup", () => (isDrawing = false));
+      canvas.addEventListener("mouseout", () => (isDrawing = false));
+    </script>
   </body>
 </html>
