@@ -63,6 +63,7 @@ body {
 .player__slider {
   width: 10px;
   height: 30px;
+  visibility: hidden;
 }
 
 .player__controls {
@@ -103,7 +104,7 @@ body {
   width: 50%;
   background: #ffc600;
   flex: 0;
-  flex-basis: 50%;
+  /* flex-basis: 50%; */
 }
 
 /* unholy css to style input type="range" */
