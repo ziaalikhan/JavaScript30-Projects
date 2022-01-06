@@ -1,4 +1,4 @@
-/* Get Our Elements */
+/* Get All Elements */
 const player = document.querySelector(".player");
 const video = player.querySelector(".viewer");
 const progress = player.querySelector(".progress");
@@ -6,14 +6,35 @@ const progressBar = player.querySelector(".progress__filled");
 const toggle = player.querySelector(".toggle");
 const skipButtons = player.querySelectorAll("[data-skip]");
 const ranges = player.querySelectorAll(".player__slider");
-const volume = document.getElementById('volume');
+const volume = document.getElementById("volume");
+const voiceCheck = player.querySelector(".voiceCheck");
+const voiceRange = player.querySelectorAll("[data-vol]");
 const fullscreenButton = document.getElementById("fullscreen-button");
 
-/* Build out functions */
+/* Build All functions */
 function tooglePlay(e) {
   const method = video.paused ? "play" : "pause";
   video[method]();
 }
+
+function voicePlay() {
+  video.muted ? (video.muted = false) : (video.muted = true);
+}
+
+function voiceChecker() {
+  let voiceIcon = video.muted ? "🎧" : "🔇";
+  voiceCheck.textContent = voiceIcon;
+}
+
+function updateVolume(e) {
+  video.muted ? false : true;
+  return (video.volume = volume.value);
+}
+
+function volumeRange (e) {
+  console.log(e);
+}
+
 
 function updateButton() {
   const icon = video.paused ? "►" : "❚ ❚";
@@ -23,8 +44,6 @@ function updateButton() {
 function skip(e) {
   video.currentTime += parseFloat(this.dataset.skip);
 }
-
-
 
 function handleProgress() {
   const percent = (video.currentTime / video.duration) * 100;
@@ -36,36 +55,34 @@ function scrub(e) {
   video.currentTime = scrubTime;
 }
 
-function updateVolume (e) {
-  video.muted ? video.muted = false : ""
-  // if (video.muted) {
-  //   video.muted = false;
-  // }
-  video.volume = volume.value;
-}
+
 
 function toggleFullScreen() {
-  document.fullscreenElement
-    ? document.exitFullscreen()
-    : document.webkitFullscreenElement
-    ? document.webkitExitFullscreen()
-    : video.webkitRequestFullscreen
-    ? video.webkitRequestFullscreen()
-    : video.requestFullscreen();
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  } else if (document.webkitFullscreenElement) {
+    document.webkitExitFullscreen();
+  } else if (document.webkitRequestFullscreen) {
+    document.webkitRequestFullscreen();
+  } else {
+    video.requestFullscreen();
+  }
 }
 
-/* Hook up the event listeners */
+/* Hook up the Events listeners */
 
 video.addEventListener("click", tooglePlay);
 video.addEventListener("play", updateButton);
 video.addEventListener("pause", updateButton);
 video.addEventListener("timeupdate", handleProgress);
 toggle.addEventListener("click", tooglePlay);
-volume.addEventListener('input', updateVolume);
+voiceCheck.addEventListener("click", voiceChecker);
+voiceCheck.addEventListener("click", voicePlay);
+volume.addEventListener("input", updateVolume);
+voiceRange.addEventListener("change", volumeRange);
 fullscreenButton.addEventListener("click", toggleFullScreen);
 
 skipButtons.forEach((button) => button.addEventListener("click", skip));
-
 
 let mousedown = false;
 progress.addEventListener("click", scrub);
