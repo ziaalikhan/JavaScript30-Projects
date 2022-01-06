@@ -9,60 +9,62 @@
   </head>
 
   <body>
-    <div class="inbox">
-      <h2>Click Shift</h2>
-      <div class="item">
-        <div class="checkBox">
-          <input class="checkbox_Input" type="checkbox" />
-          <p>Apple</p>
+    <div>
+      <div class="inbox">
+        <h2>Click Shift</h2>
+        <div class="item">
+          <div class="checkBox">
+            <input class="checkbox_Input" type="checkbox" />
+            <p>Apple</p>
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="checkBox">
-          <input class="checkbox_Input" type="checkbox" />
-          <p>faceBook</p>
+        <div class="item">
+          <div class="checkBox">
+            <input class="checkbox_Input" type="checkbox" />
+            <p>faceBook</p>
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="checkBox">
-          <input class="checkbox_Input" type="checkbox" />
-          <p>Gmail</p>
+        <div class="item">
+          <div class="checkBox">
+            <input class="checkbox_Input" type="checkbox" />
+            <p>Gmail</p>
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="checkBox">
-          <input class="checkbox_Input" type="checkbox" />
-          <p>WhatsApp</p>
+        <div class="item">
+          <div class="checkBox">
+            <input class="checkbox_Input" type="checkbox" />
+            <p>WhatsApp</p>
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="checkBox">
-          <input class="checkbox_Input" type="checkbox" />
-          <p>google</p>
+        <div class="item">
+          <div class="checkBox">
+            <input class="checkbox_Input" type="checkbox" />
+            <p>google</p>
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="checkBox">
-          <input class="checkbox_Input" type="checkbox" />
-          <p>Linkldeln</p>
+        <div class="item">
+          <div class="checkBox">
+            <input class="checkbox_Input" type="checkbox" />
+            <p>Linkldeln</p>
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="checkBox">
-          <input class="checkbox_Input" type="checkbox" />
-          <p>DisCord</p>
+        <div class="item">
+          <div class="checkBox">
+            <input class="checkbox_Input" type="checkbox" />
+            <p>DisCord</p>
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="checkBox">
-          <input class="checkbox_Input" type="checkbox" />
-          <p>Youtube</p>
+        <div class="item">
+          <div class="checkBox">
+            <input class="checkbox_Input" type="checkbox" />
+            <p>Youtube</p>
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="checkBox">
-          <input class="checkbox_Input" type="checkbox" />
-          <p>Twitter</p>
+        <div class="item">
+          <div class="checkBox">
+            <input class="checkbox_Input" type="checkbox" />
+            <p>Twitter</p>
+          </div>
         </div>
       </div>
     </div>
@@ -71,22 +73,30 @@
       const checkBoxes = document.querySelectorAll(
         ".inbox input[type='checkbox']"
       );
-
-      let lastCheked;
+      let lastCheked = true;
       function handleCheck(e) {
-        let inBetween = false;
+        let inBetween;
         if (e.shiftKey && this.checked) {
           checkBoxes.forEach((val) => {
-            if (val === this || val === lastCheked) {
-              inBetween = !inBetween;
-            }
-            if (inBetween) {
-              val.checked = true;
-            }
+            val === this || val === lastCheked
+              ? (inBetween = !inBetween)
+              : inBetween
+              ? (val.checked = true)
+              : "";
+          });
+          // console.log((lastCheked = false));
+        } else if (e.shiftKey && lastCheked) {
+          checkBoxes.forEach((val) => {
+            val === this || val === !lastCheked
+              ? (inBetween = !inBetween)
+              : inBetween
+              ? (val.checked = false)
+              : "";
           });
         }
         lastCheked = this;
       }
+
       checkBoxes.forEach((val) => val.addEventListener("click", handleCheck));
     </script>
   </body>
