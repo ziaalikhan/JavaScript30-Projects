@@ -6,7 +6,7 @@ const progressBar = player.querySelector(".progress__filled");
 const toggle = player.querySelector(".toggle");
 const skipButtons = player.querySelectorAll("[data-skip]");
 const ranges = player.querySelectorAll(".player__slider");
-const volume = document.getElementById("volume");
+const volume = document.getElementById('volume');
 const fullscreenButton = document.getElementById("fullscreen-button");
 
 /* Build out functions */
@@ -24,6 +24,8 @@ function skip(e) {
   video.currentTime += parseFloat(this.dataset.skip);
 }
 
+
+
 function handleProgress() {
   const percent = (video.currentTime / video.duration) * 100;
   progressBar.style.flexBasis = `${percent}%`;
@@ -34,8 +36,8 @@ function scrub(e) {
   video.currentTime = scrubTime;
 }
 
-function updateVolume(e) {
-  video.muted ? (video.muted = false) : "";
+function updateVolume (e) {
+  video.muted ? video.muted = false : ""
   // if (video.muted) {
   //   video.muted = false;
   // }
@@ -59,10 +61,11 @@ video.addEventListener("play", updateButton);
 video.addEventListener("pause", updateButton);
 video.addEventListener("timeupdate", handleProgress);
 toggle.addEventListener("click", tooglePlay);
-volume.addEventListener("input", updateVolume);
+volume.addEventListener('input', updateVolume);
 fullscreenButton.addEventListener("click", toggleFullScreen);
 
 skipButtons.forEach((button) => button.addEventListener("click", skip));
+
 
 let mousedown = false;
 progress.addEventListener("click", scrub);
