@@ -12,16 +12,14 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  background: #7a419b;
   min-height: 100vh;
-  background: rgb(120, 120, 255);
   background-size: cover;
   align-items: center;
   justify-content: center;
 }
 
 .player {
-  min-width: 950px;
+  width: 850px;
   border: 5px solid rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   position: relative;
@@ -54,7 +52,8 @@ body {
   outline: 0;
   padding: 0;
   cursor: pointer;
-  max-width: 50px;
+  font-size: 20px;
+  max-width: 70px;
 }
 
 .player__button:focus {
@@ -64,6 +63,7 @@ body {
 .player__slider {
   width: 10px;
   height: 30px;
+  background-color: black;
   visibility: hidden;
 }
 
