@@ -8,6 +8,7 @@ function addItem(e) {
   e.preventDefault();
   const text = this.querySelector("[name=item]").value;
   const item = {
+    id: Math.random(),
     text,
     done: false,
   };
@@ -18,14 +19,13 @@ function addItem(e) {
   this.reset();
 }
 
-function populateList(plates = [], platesList) {
+function populateList(plates, platesList) {
   platesList.innerHTML = plates
     .map((val, i) => {
       return `
         <li>
-          <input class="checkBox" type="checkbox" data-index=${i} id="item${i}" ${
-        val.done ? "checked" : ""
-      } />
+          <input class="checkBox" type="checkbox" data-index=${i} id="item${i}" ${val.done ? "checked" : ""}
+         />
           <label for="item${i}">${val.text}</label>
         </li>
       `;
@@ -51,3 +51,4 @@ delete_item.addEventListener("submit", deleteallItems);
 itemsList.addEventListener("click", toggleDone);
 
 populateList(items, itemsList);
+

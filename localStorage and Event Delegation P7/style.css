@@ -21,6 +21,9 @@
   border: none;
 }
 
+.click {
+  background-color: blue;
+}
 .checkBox:checked {
   display: none;
 }
