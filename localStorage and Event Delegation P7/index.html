@@ -25,11 +25,63 @@
       <form class="delete-item">
         <input class="btn" type="submit" value="Delete All" />
       </form>
-      <ul class="plates">
-        <li>Loading Data</li>
+      <ul>
+        <li class="plates">Loading Data</li>
       </ul>
     </div>
 
     <script src="app.js"></script>
+    <!-- <script>
+      const addItems = document.querySelector(".add-items");
+      const delete_item = document.querySelector(".delete-item");
+      const itemsList = document.querySelector(".plates");
+      const items = JSON.parse(localStorage.getItem("items")) || [];
+
+      function addItem(e) {
+        e.preventDefault();
+        const text = this.querySelector("[name=item]").value;
+        const item = {
+          id: Math.floor(Math.random() * 10000),
+          text,
+          // done: false,
+        };
+        items.push(item);
+        localStorage.setItem("items", JSON.stringify(items));
+        viewList(items, itemsList);
+        this.reset();
+      }
+
+      function viewList(plates, platelist) {
+        // <input class="checkBox" type="checkbox" data-index=${i} id="item${i}" ${val.done ? "checked" : ""}/>
+        platelist.innerHTML = plates
+          .map((val , id) => {
+            return `
+                <li>
+                  <p>${val.text}</p>
+                  <button id="${id}">Delete</button>
+                </li>
+                  `;
+          })
+          .join("");
+      }
+
+      function removeTodo(index) {
+        let res = index.target.id;
+        const items = JSON.parse(localStorage.getItem("items"));
+        items.splice(res, 1);
+        localStorage.setItem("items", JSON.stringify(items));
+        viewList(items, itemsList);
+      }
+
+      function deleteallItems(e) {
+        localStorage.clear("items");
+      }
+
+      addItems.addEventListener("submit", addItem);
+      delete_item.addEventListener("submit", deleteallItems);
+      itemsList.addEventListener("click", removeTodo);
+
+      viewList(items, itemsList);
+    </script> -->
   </body>
 </html>
