@@ -32,7 +32,7 @@ function paintToCanvas() {
     // mess with them
     // pexels = redEffect(pexels);
     // pexels = rgbSplit(pexels);
-    // put them back
+    // put them back ..
     // ctx.putImageData(pexels, 0, 0);
   }, 16);
 }
