@@ -23,9 +23,9 @@ function populateList(plates, platesList) {
   platesList.innerHTML = plates
     .map((val, i) => {
       return `
-        <li>
+        <li class="items">
           <label for="item${i}">${val.text}</label>
-          <button id="${i}">Delete</button>
+          <button class="deleteOne_Btn" id="${i}">Delete</button>
         </li>
       `;
     })

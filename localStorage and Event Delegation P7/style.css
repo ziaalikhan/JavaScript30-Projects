@@ -20,6 +20,17 @@
   outline: none;
   border: none;
 }
+.items {
+  margin-top: 5px;
+}
+.deleteOne_Btn {
+  width: 70px;
+  height: 30px;
+  background-color: blue;
+  color: white;
+  outline: none;
+  border: none;
+}
 
 .click {
   background-color: blue;
