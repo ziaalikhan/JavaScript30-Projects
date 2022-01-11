@@ -34,7 +34,6 @@ function paintToCanvas() {
     // pexels = rgbSplit(pexels);
     // put them back
     // ctx.putImageData(pexels, 0, 0);
-    // its Declare Down //
   }, 16);
 }
 
