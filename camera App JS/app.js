@@ -14,7 +14,7 @@ function getVideo() {
       video.play();
     })
     .catch((error) => {
-      alert("You have No Acess of camera.." + error);
+      alert("You have No Acess of camera..." + error);
     });
 }
 
