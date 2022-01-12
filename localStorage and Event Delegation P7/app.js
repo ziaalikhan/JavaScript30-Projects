@@ -31,7 +31,7 @@ function populateList(plates, platesList) {
     .join("");
 }
 
-function deleteallItems(e) {
+function deleteallItems() {
   localStorage.clear("items");
 }
 
