@@ -33,12 +33,12 @@ function paintToCanvas() {
 
 function zoomin() {
   const currWidth = canvas.clientWidth;
-  canvas.style.width = (currWidth + 5) + "px";
+  canvas.style.width = (currWidth + 7) + "px";
 }
 
 function zoomout() {
   const currWidth = canvas.clientWidth;
-  canvas.style.width = (currWidth - 5) + "px";
+  canvas.style.width = (currWidth - 7) + "px";
 }
 
 
