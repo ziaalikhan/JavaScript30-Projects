@@ -1,47 +1,50 @@
-html {
+body {
+  padding: 0px;
+  margin: 0px;
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-html {
-  font-size: 10px;
-  /* background: #ffc600; */
-}
-
-.photobooth {
-  background: white;
-  max-width: 150rem;
-  margin: 2rem auto;
-  border-radius: 2px;
-  height: 100vh;
-}
-
-/*clearfix*/
-.photobooth:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-
-.photo {
-  width: 100%;
-  height: 700px;
-  float: left;
+.camera {
+  width: 300px;
+  float: right;
+  padding-right: 10px;
 }
 
 .player {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width:200px;
+  width: 100%;
+  box-shadow: 0 0 18px 3px black;
+}
+@media screen and (max-width: 780px) {
+  .camera {
+    width: 130px;
+  }
 }
 
-/*
-  Strip!
-*/
+.canvasRealtime {
+  width: 50%;
+  padding-left: 10%;
+  padding-top: 20px;
+ 
+}
+.photo {
+  width: 100%;
+  box-shadow: 0 0 18px 3px black;
+}
+.take-Photo-Container {
+  text-align: center;
+}
+.take-Photo-Container > button {
+  width: 150px;
+  height: 70px;
+  font-size: 35px;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.strip {
+  width: 200px;
+}
 
 .strip {
   padding: 2rem;
@@ -50,13 +53,7 @@ html {
 .strip img {
   width: 100px;
   overflow-x: scroll;
-  padding: 0.8rem 0.8rem 2.5rem 0.8rem;
-  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  padding: 0.8rem 0.8rem 1px 0.8rem;
+  box-shadow: 0 0 18px 3px black;
   background: white;
 }
-
-/* .strip a:nth-child(5n+1) img { transform: rotate(10deg); }
-.strip a:nth-child(5n+2) img { transform: rotate(-2deg); }
-.strip a:nth-child(5n+3) img { transform: rotate(8deg); }
-.strip a:nth-child(5n+4) img { transform: rotate(-11deg); }
-.strip a:nth-child(5n+5) img { transform: rotate(12deg); } */

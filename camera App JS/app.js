@@ -3,7 +3,8 @@ const canvas = document.querySelector(".photo");
 const ctx = canvas.getContext("2d");
 const strip = document.querySelector(".strip");
 const snap = document.querySelector(".snap");
-const redColor = document.querySelector(".redColor");
+const fullscreenButton = document.getElementById("fullscreen-button");
+
 
 function getVideo() {
   navigator.mediaDevices
@@ -13,7 +14,7 @@ function getVideo() {
       video.play();
     })
     .catch((error) => {
-      console.log("You have No Acess of camera.." + error);
+      alert("You have No Acess of camera.." + error);
     });
 }
 
@@ -27,15 +28,19 @@ function paintToCanvas() {
   // realtime getVideo
   return setInterval(() => {
     ctx.drawImage(video, 0, 0, width, height);
-    // take the pexels out
-    // let pexels = ctx.getImageData(0, 0, width, height);
-    // mess with them
-    // pexels = redEffect(pexels);
-    // pexels = rgbSplit(pexels);
-    // put them back ..
-    // ctx.putImageData(pexels, 0, 0);
   }, 16);
 }
+
+function zoomin() {
+  const currWidth = canvas.clientWidth;
+  canvas.style.width = (currWidth + 5) + "px";
+}
+
+function zoomout() {
+  const currWidth = canvas.clientWidth;
+  canvas.style.width = (currWidth - 5) + "px";
+}
+
 
 function takePhoto() {
   // play the sound //
@@ -52,29 +57,19 @@ function takePhoto() {
   strip.insertBefore(link, strip.firstChild);
 }
 
-function redColorFunc(pexels) {
-  console.log("click" + e.target.value);
+function toggleFullScreen() {
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  } else if (document.webkitFullscreenElement) {
+    document.webkitExitFullscreen();
+  } else if (document.webkitRequestFullscreen) {
+    document.webkitRequestFullscreen();
+  } else {
+    canvas.requestFullscreen();
+  }
 }
-
-// function redEffect(pexels) {
-//   for (let i = 0; i < pexels.data; i = i + 4) {
-//     pexels.data[i + 0] = pexels.data[i + 0] + 100; // RED
-//     pexels.data[i + 1] = pexels.data[i + 1] - 50; // GREEN
-//     pexels.data[i + 2] = pexels.data[i + 2] * 0.5; // Blue
-//   }
-//   return pexels;
-// }
-
-// function rgbSplit(pexels) {
-//   for (let i = 0; i < pexels.data.length; i += 4) {
-//     pexels.data[i - 150] = pexels.data[i + 0]; // RED
-//     pexels.data[i + 500] = pexels.data[i + 1]; // GREEN
-//     pexels.data[i - 550] = pexels.data[i + 2]; // Blue
-//   }
-//   return pexels;
-// }
 
 getVideo();
 
 video.addEventListener("canplay", paintToCanvas);
-redColor.addEventListener("change", redColorFunc);
+fullscreenButton.addEventListener("click", toggleFullScreen);
