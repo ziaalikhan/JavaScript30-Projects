@@ -10,7 +10,6 @@ function addItem(e) {
   const item = {
     id: Math.floor(Math.random() * 10000),
     text,
-    done: false,
   };
 
   items.push(item);
@@ -23,9 +22,9 @@ function populateList(plates, platesList) {
   platesList.innerHTML = plates
     .map((val, i) => {
       return `
-        <li class="items">
-          <label for="item${i}">${val.text}</label>
-          <button class="deleteOne_Btn" id="${i}">Delete</button>
+        <li class="items" id="item-${i}">
+          <label >${val.text}</label>
+          <button class="deleteOne_Btn" onClick="removeTodo(${i})" id="${i}">Delete</button>
         </li>
       `;
     })
@@ -37,14 +36,12 @@ function deleteallItems(e) {
 }
 
 function removeTodo(index) {
-  let res = index.target.id;
-  items.splice(res, 1);
+  items.splice(index, 1);
   localStorage.setItem("items", JSON.stringify(items));
   populateList(items, itemsList);
 }
 
 addItems.addEventListener("submit", addItem);
 delete_item.addEventListener("submit", deleteallItems);
-itemsList.addEventListener("click", removeTodo);
 
 populateList(items, itemsList);
