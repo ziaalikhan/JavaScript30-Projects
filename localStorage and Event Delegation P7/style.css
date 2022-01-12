@@ -3,7 +3,6 @@
 }
 .plates {
   list-style: none;
-  /* display: none; */
 }
 .add-items > .input_field {
   width: 300px;
