@@ -73,22 +73,22 @@
         }
       }
 
-      // function stopButton_Handler() {
-      //   if (pause_Resume.textContent === "❚ ❚") {
-      //     pause_Resume.textContent = "►";
-      //   }
-      //   speechSynthesis.cancel();
-      // }
+      function stopButton_Handler() {
+        if (pause_Resume.textContent === "❚ ❚") {
+          pause_Resume.textContent = "►";
+        }
+        speechSynthesis.cancel();
+      }
 
-      // function pause_Resume_Handler() {
-      //   if (pause_Resume.textContent === "►") {
-      //     pause_Resume.textContent = "❚ ❚";
-      //     speechSynthesis.resume();
-      //   } else {
-      //     pause_Resume.textContent = "►";
-      //     speechSynthesis.pause();
-      //   }
-      // }
+      function pause_Resume_Handler() {
+        if (pause_Resume.textContent === "►") {
+          pause_Resume.textContent = "❚ ❚";
+          speechSynthesis.resume();
+        } else {
+          pause_Resume.textContent = "►";
+          speechSynthesis.pause();
+        }
+      }
 
       speechSynthesis.addEventListener("voiceschanged", populateVoice);
       voicesDropdown.addEventListener("change", changeVoice);
