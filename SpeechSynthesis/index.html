@@ -3,11 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <title>Speech Synthesis</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Pacifico"
-      rel="stylesheet"
-      type="text/css"
-    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -19,14 +14,18 @@
       </select>
 
       <label for="rate">Rate:</label>
-      <input name="rate" type="range" min="0" max="3" value="1" step="0.1" />
+      <input name="rate" type="range" min="0" value="1" step="0.1" />
 
       <label for="pitch">Pitch:</label>
 
-      <input name="pitch" type="range" min="0" max="2" step="0.1" />
-      <textarea name="text" placeholder="Write Someting to Speech For You 👍"></textarea>
-      <!-- <button id="stop">Stop!</button> -->
+      <input name="pitch" type="range" min="0" step="0.1" />
+      <textarea
+        name="text"
+        placeholder="Write Someting to Speech For You 👍"
+      ></textarea>
       <button id="speak">Speak</button>
+      <button id="stop">Stop</button>
+      <button id="pause_Resume">►</button>
     </div>
 
     <script>
@@ -36,50 +35,67 @@
       const options = document.querySelectorAll(
         '[type="range"], [name="text"]'
       );
-      console.log(options);
       const speakButton = document.querySelector("#speak");
       const stopButton = document.querySelector("#stop");
+      const pause_Resume = document.querySelector("#pause_Resume");
       msg.text = document.querySelector("[name='text']").value;
 
       function populateVoice() {
         voices = this.getVoices();
-        console.log(voices);
         voicesDropdown.innerHTML = voices
           .map((val) => {
             return `<option value="${val.name}">${val.name} (${val.lang})</option>`;
           })
           .join("");
-        console.log(voicesDropdown.value);
       }
 
       function changeVoice() {
         msg.voice = voices.find((val) => val.name === this.value);
-        //   toogle();
-      }
-
-      function toogle() {
-        if(speakButton.textContent === "Speak") {
-            speakButton.textContent = "Stop";
-            speechSynthesis.speak(msg);
-        }else {
-            speakButton.textContent = "Speak";
-            speechSynthesis.cancel();
-        }
       }
 
       function setOptions() {
         msg[this.name] = this.value;
-        //   toogle();
+        // console.log((msg[this.name] = this.value));
       }
-      function stopVoice() {
+
+      function speakButton_Handler(startVoice = true) {
         speechSynthesis.cancel();
+
+        if (startVoice) {
+          speechSynthesis.speak(msg);
+        }
+
+
+        if (pause_Resume.textContent === "►") {
+          pause_Resume.textContent = "❚ ❚";
+        } else {
+          pause_Resume.textContent = "►";
+        }
       }
+
+      // function stopButton_Handler() {
+      //   if (pause_Resume.textContent === "❚ ❚") {
+      //     pause_Resume.textContent = "►";
+      //   }
+      //   speechSynthesis.cancel();
+      // }
+
+      // function pause_Resume_Handler() {
+      //   if (pause_Resume.textContent === "►") {
+      //     pause_Resume.textContent = "❚ ❚";
+      //     speechSynthesis.resume();
+      //   } else {
+      //     pause_Resume.textContent = "►";
+      //     speechSynthesis.pause();
+      //   }
+      // }
 
       speechSynthesis.addEventListener("voiceschanged", populateVoice);
       voicesDropdown.addEventListener("change", changeVoice);
       options.forEach((val) => val.addEventListener("change", setOptions));
-      speakButton.addEventListener("click", toogle);
-    //   stopButton.addEventListener("click", stopVoice);
+      speakButton.addEventListener("click", speakButton_Handler);
+      stopButton.addEventListener("click", stopButton_Handler);
+      pause_Resume.addEventListener("click", pause_Resume_Handler);
     </script>
   </body>
 </html>
