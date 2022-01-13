@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Understanding JavaScript's Capture</title>
+    <title>Capture</title>
   </head>
   <body class="bod">
     <div class="one">
@@ -40,27 +40,25 @@
       }
     </style>
 
-<button>Click</button>
+    <button>Click</button>
     <script>
       const divs = document.querySelectorAll("div");
       const button = document.querySelector("button");
 
       function getResults(e) {
         console.log(this.classList.value);
-        e.stopPropagation() // stop Bubling
+        e.stopPropagation(); // Stop Bubling
       }
 
       divs.forEach((val) =>
-        val.addEventListener("click", getResults , {
-            capture: false
+        val.addEventListener("click", getResults, {
+          capture: false,
         })
       );
 
-      button.addEventListener("click", () => {
-          console.log("clicked");
-      }, {
-          once: true,
-      })
+      button.addEventListener("click", () => console.log("clicked"), {
+        once: true,
+      });
     </script>
   </body>
 </html>
