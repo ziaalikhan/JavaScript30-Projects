@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="timer">
+      <div class="display">
+        <h1 class="display__time-left"></h1>
+      </div>
+    </div>
+
+    <script>
+      const display_Time = document.querySelector(".display__time-left");
+
+      function timer(e) {
+        const date = new Date();
+        const seconds = date.getSeconds();
+        const minutes = date.getMinutes();
+        const hour = date.getHours();
+        const updateHour = hour > 12 ? hour - 12 : hour;
+        display_Time.textContent = `${updateHour}:${
+          minutes < 10 ? "0" : ""
+        }${minutes}:${seconds}`;
+      }
+
+      setInterval(timer);
+    </script>
+  </body>
+</html>
