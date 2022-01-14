@@ -3,30 +3,58 @@
   <head>
     <meta charset="UTF-8" />
     <title>Countdown Timer</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Inconsolata"
+      rel="stylesheet"
+      type="text/css"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="timer">
+      <div class="timer__controls">
+        <button data-time="20" class="timer__button">20 Secs</button>
+        <button data-time="300" class="timer__button">Work 5</button>
+        <button data-time="900" class="timer__button">Quick 15</button>
+        <button data-time="1200" class="timer__button">Snack 20</button>
+        <button data-time="3600" class="timer__button">Lunch Break</button>
+        <form name="customForm" id="custom">
+          <input type="text" name="minutes" placeholder="Enter Minutes" />
+        </form>
+      </div>
       <div class="display">
         <h1 class="display__time-left"></h1>
+        <p class="display__end-time"></p>
       </div>
     </div>
 
     <script>
-      const display_Time = document.querySelector(".display__time-left");
+      let countDown;
+      const display_Time_Left = document.querySelector(".display__time-left");
+      const display_Time_End = document.querySelector(".display__end-time");
 
-      function timer(e) {
-        const date = new Date();
-        const seconds = date.getSeconds();
-        const minutes = date.getMinutes();
-        const hour = date.getHours();
-        const updateHour = hour > 12 ? hour - 12 : hour;
-        display_Time.textContent = `${updateHour}:${
-          minutes < 10 ? "0" : ""
-        }${minutes}:${seconds}`;
+      function timer(seconds) {
+        clearInterval(countDown);
+        const date = Date.now();
+        const then = date + seconds * 1000;
+        console.log(then);
+
+        countDown = setInterval(() => {
+          const secondsLeft = Math.round((then - Date.now()) / 1000);
+          // check if we should stop it ..
+          if (secondsLeft <= 0) {
+            clearInterval(countDown);
+            return;
+          }
+          displayTimeLeft(secondsLeft);
+        }, 1000);
       }
 
-      setInterval(timer);
+      function displayTimeLeft(seconds) {
+        const minutes = Math.round(seconds / 60);
+        const remainderSeconds = seconds % 60;
+        console.log(remainderSeconds);
+      }
     </script>
   </body>
 </html>
