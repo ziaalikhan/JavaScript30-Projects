@@ -56,12 +56,12 @@
         slider.classList.remove("active");
       });
       slider.addEventListener("mousemove", (e) => {
-        if (!isDown) return //function will stop working..
+        if (!isDown) return; //function will stop working..
         // e.preventDefault();
         const x = e.pageX - slider.offsetLeft;
         const walk = x - startX;
         slider.scrollLeft = startLeft - walk;
-        console.log({x , startX});
+        console.log({ x, startX });
       });
     </script>
   </body>
