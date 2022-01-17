@@ -18,9 +18,7 @@
         <button data-time="900" class="timer__button">Quick 15</button>
         <button data-time="1200" class="timer__button">Snack 20</button>
         <button data-time="3600" class="timer__button">Lunch Break</button>
-        <form name="customForm" id="custom">
-          <input type="text" name="minutes" placeholder="Enter Minutes" />
-        </form>
+        <input type="text" id="minutes" placeholder="Enter Minutes" />
       </div>
       <div class="display">
         <h1 class="display__time-left"></h1>
@@ -32,16 +30,20 @@
       let countDown;
       const display_Time_Left = document.querySelector(".display__time-left");
       const display_Time_End = document.querySelector(".display__end-time");
-
+      const buttons = document.querySelectorAll("[data-time]");
+      const inputMinutes = document.querySelector("#minutes");
+      
+      // Timer Function 
       function timer(seconds) {
+        // clear time Down if existing one running..
         clearInterval(countDown);
-        const date = Date.now();
-        const then = date + seconds * 1000;
-        console.log(then);
+        const now = Date.now();
+        const then = now + seconds * 1000;
+        displayTimeLeft(seconds);
+        displayEndTime(then);
 
         countDown = setInterval(() => {
           const secondsLeft = Math.round((then - Date.now()) / 1000);
-          // check if we should stop itt ..
           if (secondsLeft <= 0) {
             clearInterval(countDown);
             return;
@@ -50,11 +52,42 @@
         }, 1000);
       }
 
+      // DisplayTimeLeft Function
       function displayTimeLeft(seconds) {
-        const minutes = Math.round(seconds / 60);
-        const remainderSeconds = seconds % 60;
-        console.log(remainderSeconds);
+        const minutes = Math.floor(seconds / 60);
+        const reminderSeconds = seconds % 60;
+        const display = `${minutes} : ${
+          reminderSeconds < 10 ? "0" : ""
+        }${reminderSeconds}`;
+        display_Time_Left.textContent = display;
+        document.title = display;
       }
+
+      // DisplayEndTime Function
+      function displayEndTime(timeStamp) {
+        const end = new Date();
+        const hour = end.getHours();
+        const minutes = end.getMinutes();
+        const exactHour = hour > 12 ? hour - 12 : hour;
+        display_Time_End.textContent = `Be back At ${exactHour} ${
+          minutes < 10 ? "0" : ""
+        }${minutes}`;
+      }
+
+      function startTime(e) {
+        const seconds = parseInt(this.dataset.time);
+        timer(seconds);
+      }
+
+      buttons.forEach((val) => val.addEventListener("click", startTime));
+
+      inputMinutes.addEventListener("change", function (e) {
+        e.preventDefault();
+        let mins = e.target.value;
+        console.log(mins);
+        timer(mins * 60);
+        mins = e.target.value = "";
+      });
     </script>
   </body>
 </html>
