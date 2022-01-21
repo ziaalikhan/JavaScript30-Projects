@@ -4,18 +4,20 @@ html {
   background: #ececec;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Amatic SC', cursive;
+  font-family: "Amatic SC", cursive;
 }
 
 .start {
-    text-align: center;
+  text-align: center;
 }
 
 h1 {
@@ -26,10 +28,25 @@ h1 {
 }
 
 .score {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.2);
   padding: 0 3rem;
   line-height: 1;
   border-radius: 1rem;
+}
+
+.startBtn_Container {
+  text-align: center;
+}
+
+.startBtn_Container > button {
+  margin-top: 30px;
+  width: 110px;
+  height: 40px;
+  font-size: 20px;
+  background-color: black;
+  color: white;
+  outline: none;
+  border: none;
 }
 
 .game {
@@ -50,22 +67,23 @@ h1 {
   display: block;
   background: url(dirt.svg) bottom center no-repeat;
   background-size: contain;
-  content: '';
+  content: "";
   width: 100%;
-  height:70px;
+  height: 70px;
   position: absolute;
   z-index: 2;
   bottom: -30px;
 }
 
 .mole {
-  background: url('mole.svg') bottom center no-repeat;
+  background: url("mole.svg") bottom center no-repeat;
   background-size: 60%;
   position: absolute;
   top: 100%;
   width: 100%;
   height: 100%;
-  transition:all 0.4s;
+  transition: all 0.4s;
+  cursor: pointer;
 }
 
 .hole.up .mole {

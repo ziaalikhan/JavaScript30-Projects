@@ -7,7 +7,14 @@
   </head>
   <body>
     <h1>Whack-a-mole! <span class="score">0</span></h1>
-    <button class="start" onClick="startGame()">Start!</button>
+    <div class="startBtn_Container">
+      <button
+        class="start"
+        onClick="startGame();disabled=true;setTimeout(()=> {disabled=false}, 20000)"
+      >
+        Start!
+      </button>
+    </div>
 
     <div class="game">
       <div class="hole hole1">
@@ -34,16 +41,13 @@
       const holes = document.querySelectorAll(".hole");
       const scoreBoard = document.querySelector(".score");
       const moles = document.querySelectorAll(".mole");
-      console.log(moles);
       let lastHole;
       let timeUp;
       let score = 0;
 
       function randomTime(min, max) {
-        return Math.round(Math.random() * max - min + min);
+        return Math.floor(Math.random() * max - min + min);
       }
-
-      console.log(randomTime(200, 1000));
 
       function randomHole(holes) {
         const idx = Math.floor(Math.random() * holes.length);
@@ -53,15 +57,13 @@
           console.log("Again Running...");
           return randomHole(holes);
         }
-
         lastHole = hole;
         return hole;
       }
 
       function peep() {
-        const time = randomTime(200, 1500);
+        const time = (1000, 1500);
         const hole = randomHole(holes);
-        // console.log({ time, hole });
         hole.classList.add("up");
 
         setTimeout(() => {
@@ -72,18 +74,17 @@
 
       function startGame() {
         timeUp = false;
-        score = 0;
         peep();
         setTimeout(() => {
           timeUp = true;
-        }, 15000);
+        }, 20000);
       }
 
       function scoreCard(e) {
         if (!e.isTrusted) return; // Cheater
         score++;
-        this.classList.remove("up");
         scoreBoard.textContent = score;
+        this.parentNode.classList.remove("up");
       }
 
       moles.forEach((val) => val.addEventListener("click", scoreCard));
