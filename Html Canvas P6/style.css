@@ -13,7 +13,7 @@ body {
   }
 
   .mycanvas {
-    cursor: cell;
+    cursor: pointer;
     border: 1px solid black;
   }
   .colorAndslider {

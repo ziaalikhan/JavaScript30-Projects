@@ -12,7 +12,14 @@
 
     <nav id="main">
       <ul>
-        <li class="logo"><a href="#">LOGO.</a></li>
+        <li>
+          <img
+            width="120px"
+            height="40px"
+            src="https://source.unsplash.com/GKN6rpDr0EI/960x640"
+            alt=""
+          />
+        </li>
         <li><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Images</a></li>
@@ -117,25 +124,21 @@
         quas quos et aperiam aut doloremque optio maxime fugiat doloribus. Eum
         dolorum expedita quam, nesciunt
       </p>
-    
     </div>
 
     <script>
-
       const nav = document.querySelector("#main");
 
       const topNav = nav.offsetTop;
 
       function fixNavbar() {
-        console.log(topNav);
-        if(window.scrollY >= topNav) {
-            document.body.style.paddingTop = nav.offsetHeight + "px";
-            document.body.classList.add("fix-nav");
-        }else {
-            document.body.style.paddingTop = 0;
-            document.body.classList.remove("fix-nav");
+        if (window.scrollY >= topNav) {
+          document.body.style.paddingTop = nav.offsetHeight + "px";
+          document.body.classList.add("fix-nav");
+        } else {
+          document.body.style.paddingTop = 0;
+          document.body.classList.remove("fix-nav");
         }
-
       }
 
       window.addEventListener("scroll", fixNavbar);

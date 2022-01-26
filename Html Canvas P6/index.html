@@ -16,17 +16,28 @@
       </div>
       <div>
         select Your Pointer Size
-        <input value="1" min="1" max="50" id="mySlider" type="range" />
+        <input value="1" min="1" max="100" id="mySlider" type="range" />
+        <p id="pointerSize">Your Selected Pointer Size : 1 px</p>
       </div>
-      <div style="width: 30px; height: 30px; background-color: blue;">
-
-      </div>
+      <p id="selectedColor">Select Your Color</p>
+      <div
+        style="
+          margin: 0% auto;
+          width: 60px;
+          height: 60px;
+          background-color: black;
+        "
+        id="givenColour"
+      ></div>
     </div>
     <canvas class="mycanvas" id="draw"></canvas>
 
     <script>
       const colors = document.querySelector("#colors");
       const myslider = document.querySelector("#mySlider");
+      const givenColour = document.querySelector("#givenColour");
+      const selectedColor = document.querySelector("#selectedColor");
+      const pointerSize = document.querySelector("#pointerSize");
 
       const canvas = document.querySelector("#draw");
 
@@ -38,10 +49,14 @@
 
       function myFunc(e) {
         ctx.strokeStyle = e.target.value;
+        givenColour.style.backgroundColor = ctx.strokeStyle = e.target.value;
+        selectedColor.textContent = "You have Been Selected These Color.";
       }
 
       function mySliderFunc(e) {
         ctx.lineWidth = e.target.value;
+        pointerSize.textContent =
+          ctx.lineWidth = `Your Selected Pointer Size : ${e.target.value} px`;
       }
 
       let isDrawing = false;

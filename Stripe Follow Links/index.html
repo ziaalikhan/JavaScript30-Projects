@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Follow Along Nav</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="top">
+      <div class="dropdownBackground">
+        <span class="arrow"></span>
+      </div>
+
+      <ul class="cool">
+        <li>
+          <a href="#">About Me</a>
+          <div class="dropdown dropdown1">
+            <div class="bio">
+              <img
+                width="100"
+                height="100"
+                src="https://avatars.githubusercontent.com/u/64406037?s=400&u=de5ff894217aa3c78c39e2cfa2fddae60ecc9afd&v=4"
+              />
+              <p>
+                Zia sure does love web development. He is Learning things like
+                JavaScript, CSS and BBQ. Wait. BBQ isn't part of web
+                development. It should be though!
+              </p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#">Links</a>
+          <ul class="dropdown dropdown3">
+            <li>
+              <a class="button" href="http://github.com/ziaalikhan">Github</a>
+            </li>
+            <li>
+              <a
+                class="button"
+                href="https://www.linkedin.com/in/zia-ur-rehman-25495a186/"
+                >Linkdeln</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <script>
+      const triggers = document.querySelectorAll(".cool > li");
+      const background = document.querySelector(".dropdownBackground");
+      const nav = document.querySelector(".top");
+
+      function handleEnter() {
+        this.classList.add("trigger-enter");
+        setTimeout(
+          () =>
+            this.classList.contains("trigger-enter") &&
+            this.classList.add("trigger-enter-active"),
+          150
+        );
+        background.classList.add("open");
+
+        const dropdown = this.querySelector(".dropdown");
+        const dropdownCoords = dropdown.getBoundingClientRect();
+        const navCoords = nav.getBoundingClientRect();
+
+        const coords = {
+          height: dropdownCoords.height,
+          width: dropdownCoords.width,
+          top: dropdownCoords.top - navCoords.top,
+          left: dropdownCoords.left - navCoords.left,
+        };
+
+        background.style.setProperty("width", `${coords.width}px`);
+        background.style.setProperty("height", `${coords.height}px`);
+        background.style.setProperty(
+          "transform",
+          `translate(${coords.left}px, ${coords.top}px)`
+        );
+      }
+
+      function handleLeave() {
+        this.classList.remove("trigger-enter", "trigger-enter-active");
+        background.classList.remove("open");
+      }
+
+      triggers.forEach((trigger) =>
+        trigger.addEventListener("mouseenter", handleEnter)
+      );
+      triggers.forEach((trigger) =>
+        trigger.addEventListener("mouseleave", handleLeave)
+      );
+
+    </script>
+  </body>
+</html>
